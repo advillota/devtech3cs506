@@ -22,7 +22,7 @@ public class DoublyLinkedListTest {
         // Tests for get
 
     /**
-     * @author grayson_replace_this
+     * @author Anne Villota
      * @see GetAtOutOfBoundsThrowsException
      * given example tests
      */
@@ -182,7 +182,7 @@ public class DoublyLinkedListTest {
         // Tests for remove
 
     /**
-     * @author Anne Villota
+     * @author George Gissel
      * @see BrokenRemoveAtIndex
      * Checks to make sure remove() picks the correct elment, updates size and does 
      * not change the rest of the list
@@ -200,7 +200,7 @@ public class DoublyLinkedListTest {
     // Tests for removeFirst
 
     /**
-     * @author Anne Villota
+     * @author George Gissel
      * @see BrokenRemoveFirst
      * Checks to make sure removeFirst() picks the correct elment, updates size and does 
      * not change the rest of the list
@@ -218,7 +218,7 @@ public class DoublyLinkedListTest {
     // Tests for removeLast
 
     /**
-     * @author Anne Villota
+     * @author George Gissel
      * @see BrokenRemoveLast
      * Checks to make sure removeLast() picks the correct elment, updates size and does 
      * not change the rest of the list

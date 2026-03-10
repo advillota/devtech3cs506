@@ -5,10 +5,10 @@
 public class BrokenSet<E> extends DoublyLinkedList<E> {
     @Override
     public E set(int index, E element) {
-        checkElementIndex(index);
-        Node<E> x = node(index);
-      //  E oldVal = x.item;
-        // x.item = element; dont set anything
+        // Incorrectly clamps index instead of throwing for out-of-bounds.
+        int bounded = Math.max(0, Math.min(index, size() - 1));
+        Node<E> x = node(bounded);
+        x.item = element;
         return element; // wrong: return new value instead of old
     }
 }
