@@ -18,11 +18,12 @@ public class DoublyLinkedListTest {
         list = new DoublyLinkedList<>();
     }
 
-    // Tests for get
+        // Tests for get
 
     /**
      * @author grayson_replace_this
      * @see GetAtOutOfBoundsThrowsException
+     * given example tests
      */
     @Test
     public void testGetAtOutOfBoundsThrowsException() {
@@ -35,7 +36,7 @@ public class DoublyLinkedListTest {
     }
 
     /**
-     * @author
+     * @author 
      * @see
      */
     @Test
