@@ -38,11 +38,12 @@ public class DoublyLinkedListTest {
 
     /**
      * @author Anne Villota
-     * @see list.add()
+     * @see BrokenGetAtIndex
      * Tests that get() returns the element added 
      */
     @Test
     public void testGetAtIndex() {
+        if (SHOULD_FAIL) list = new BrokenGetAtIndex<>();
         list.addFirst(1);
         list.add(1, 1);
         list.add(1,2);
@@ -55,11 +56,13 @@ public class DoublyLinkedListTest {
 
      /**
      * @author Anne Villota
-     * @see list.addFirst()
+     * @see BrokenGetFirst
      * Tests that get() returns the element at the front of the stack
      */
     @Test
     public void testGetFirst() {
+        if (SHOULD_FAIL) list = new BrokenGetFirst<>();
+
         list.addFirst(1);
         list.addFirst(3);  
         list.addFirst(2);  
@@ -72,11 +75,14 @@ public class DoublyLinkedListTest {
     
      /**
      * @author Anne Villota
-     * @see list.addLast()
+     * @see BrokenGetLast
+     * 
      * Tests that get() returns the element at the back of the stack
      */
     @Test
     public void testGetLast() {
+        if (SHOULD_FAIL) list = new BrokenGetLast<>();
+
         list.addFirst(1);
         list.addFirst(3);  
         list.addFirst(2);  
@@ -133,8 +139,10 @@ public class DoublyLinkedListTest {
      */
     @Test
     public void testAddAtIndexOutOfBoundsThrowsException() {
-        assertThrows(IndexOutOfBoundsException.class, () -> list.add(-2, 1)); //neg index
+        if (SHOULD_FAIL) list = new BrokenAddAtIndex<>();
 
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(-2, 1)); //neg index
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add(10, 1)); //index bigger than size
     }
 
     // Tests for addFirst
@@ -142,40 +150,89 @@ public class DoublyLinkedListTest {
    
      /**
      * @author Anne Villota
-     * @see list.add()
+     * @see BrokenAddFirst
      * Tests that add() adds the element at the correct index 
      */
     
     @Test
     public void testAddFirstAddsElement() {
-        //fail("Not yet implemented");
+        if (SHOULD_FAIL) list = new BrokenAddFirst<>();
+        list.addFirst(1); //empty list
+        assertEquals(1, list.getFirst());
+        list.addFirst(3); //make sure it adds first when something is there
+        assertEquals(3, list.getFirst());
     }
 
     // Tests for addLast
 
     /**
-     * @author      
-     * @see
+     * @author Anne Villota
+     * @see BrokenAddLast
+     * Tests that add() will correctly add @ the end
      */
     @Test
     public void testAddLastAddsElement() {
-        //fail("Not yet implemented");
+        if (SHOULD_FAIL) list = new BrokenAddLast<>();
+        list.addLast(1); //empty list
+        assertEquals(1, list.getLast());
+        list.addLast(3); //make sure it adds last when something is there
+        assertEquals(3, list.getLast());
     }
 
         // Tests for remove
 
     /**
-     * @author
-     * @see
-     */
+     * @author Anne Villota
+     * @see BrokenRemoveAtIndex
+     * Checks to make sure remove() picks the correct elment, updates size and does 
+     * not change the rest of the list
+     */ 
     @Test
     public void testRemoveAtIndex() {
-        //fail("Not yet implemented");
+        if (SHOULD_FAIL) list = new BrokenRemoveAtIndex<>();
+        list.addLast(1);
+        list.addLast(2);
+        assertEquals(2, list.remove(1)); //check removed element is correct
+        assertEquals(1, list.size()); //check size is updated
+        assertEquals(1, list.get(0)); //check remaining elements are correct
     }
 
     // Tests for removeFirst
 
+    /**
+     * @author Anne Villota
+     * @see BrokenRemoveFirst
+     * Checks to make sure removeFirst() picks the correct elment, updates size and does 
+     * not change the rest of the list
+     */ 
+    @Test
+    public void testRemoveFirst() {
+        if (SHOULD_FAIL) list = new BrokenRemoveFirst<>();
+        list.addLast(1);
+        list.addLast(2);
+        assertEquals(1, list.removeFirst()); //check removed element is correct
+        assertEquals(1, list.size()); //check size is updated
+        assertEquals(2, list.get(0)); //check remaining elements are correct
+    }
+
     // Tests for removeLast
+
+    /**
+     * @author Anne Villota
+     * @see BrokenRemoveLast
+     * Checks to make sure removeLast() picks the correct elment, updates size and does 
+     * not change the rest of the list
+     */ 
+    @Test
+    public void testRemoveLast() {
+        if (SHOULD_FAIL) list = new BrokenRemoveLast<>();
+        list.addLast(1);
+        list.addLast(2);
+        assertEquals(2, list.removeLast()); //check removed element is correct
+        assertEquals(1, list.size()); //check size is updated
+        assertEquals(1, list.get(0)); //check remaining elements are correct
+    }
+
 
     // Tests for size
 

@@ -7,8 +7,8 @@ public class BrokenSet<E> extends DoublyLinkedList<E> {
     public E set(int index, E element) {
         checkElementIndex(index);
         Node<E> x = node(index);
-        E oldVal = x.item;
-        x.item = element;
+      //  E oldVal = x.item;
+        // x.item = element; dont set anything
         return element; // wrong: return new value instead of old
     }
 }
