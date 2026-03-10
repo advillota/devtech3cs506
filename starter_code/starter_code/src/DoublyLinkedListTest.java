@@ -87,12 +87,42 @@ public class DoublyLinkedListTest {
     // Tests for isEmpty
 
     /**
-     * @author
-     * @see
+     * @author George Gissel
+     * @see BrokenIsEmpty
      */
     @Test
     public void testIsEmptyWhenCreated() {
+        if (SHOULD_FAIL) list = new BrokenIsEmpty<>();
+        assertTrue(list.isEmpty());
     }
+
+    /**
+     * @author George Gissel
+     * @see BrokenIsEmpty
+     */
+    @Test
+    public void testIsEmptyWhenNotEmpty() {
+        if (SHOULD_FAIL) list = new BrokenIsEmpty<>();
+        list.addLast(1);
+        assertFalse(list.isEmpty());
+        list.addLast(2);
+        assertFalse(list.isEmpty());
+    }
+
+    /**
+     * @author George Gissel
+     * @see BrokenIsEmpty
+     */
+    @Test
+    public void testIsEmptyAfterRemovingAll() {
+        if (SHOULD_FAIL) list = new BrokenIsEmpty<>();
+        list.addLast(1);
+        list.addLast(2);
+        list.removeFirst();
+        list.removeFirst();
+        assertTrue(list.isEmpty());
+    }
+
 
     // Tests for add
 
@@ -149,5 +179,79 @@ public class DoublyLinkedListTest {
 
     // Tests for size
 
+    /**
+     * @author George Gissel
+     * @see BrokenSize
+     */
+    @Test
+    public void testSizeWhenEmpty() {
+        if (SHOULD_FAIL) list = new BrokenSize<>();
+        assertEquals(0, list.size());
+    }
+
+    /**
+     * @author George Gissel
+     * @see BrokenSize
+     */
+    @Test
+    public void testSizeAfterAdd() {
+        if (SHOULD_FAIL) list = new BrokenSize<>();
+        list.addLast(1);
+        assertEquals(1, list.size());
+        list.addLast(2);
+        assertEquals(2, list.size());
+        list.addFirst(0);
+        assertEquals(3, list.size());
+    }
+
+    /**
+     * @author George Gissel
+     * @see BrokenSize
+     */
+    @Test
+    public void testSizeAfterRemove() {
+        if (SHOULD_FAIL) list = new BrokenSize<>();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.remove(1);
+        assertEquals(2, list.size());
+        list.removeFirst();
+        list.removeLast();
+        assertEquals(0, list.size());
+    }
+
+
     // Tests for set
+
+/**
+     * @author George Gissel
+     * @see BrokenSet
+     */
+    @Test
+    public void testSetAtIndex() {
+        if (SHOULD_FAIL) list = new BrokenSet<>();
+        list.addLast(10);
+        list.addLast(20);
+        list.addLast(30);
+        assertEquals(20, list.set(1, 99));
+        assertEquals(99, list.get(1));
+        assertEquals(10, list.get(0));
+        assertEquals(30, list.get(2));
+    }
+
+    /**
+     * @author George Gissel
+     * @see BrokenSet
+     */
+    @Test
+    public void testSetAtOutOfBoundsThrowsException() {
+        if (SHOULD_FAIL) list = new BrokenSet<>();
+        list.addLast(1);
+        list.addLast(2);
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(2, 3));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set(-1, 0));
+    }
+
+
 }
