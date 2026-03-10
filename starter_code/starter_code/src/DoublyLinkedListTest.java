@@ -36,18 +36,53 @@ public class DoublyLinkedListTest {
     }
 
     /**
-     * @author 
-     * @see
+     * @author Anne Villota
+     * @see list.add()
+     * Tests that get() returns the element added 
      */
     @Test
     public void testGetAtIndex() {
-        fail("Not yet implemented");
+        list.add(1, 0);
+        list.add(2, 1);
+        list.add(3,2);
+        list.add(4, 3);
+
+        assertEquals(2, list.get(3));
     }
 
     // Tests for getFirst
 
+     /**
+     * @author Anne Villota
+     * @see list.addFirst()
+     * Tests that get() returns the element at the front of the stack
+     */
+    @Test
+    public void testGetFirst() {
+        list.addFirst(1);
+        list.addFirst(3);  
+        list.addFirst(2);  
+
+        assertEquals(2, list.getFirst()); //check last element added
+    }
+
     // Tests for getLast
 
+    
+     /**
+     * @author Anne Villota
+     * @see list.addFirst()
+     * Tests that get() returns the element at the front of the stack
+     */
+    @Test
+    public void testGetFirst() {
+        list.addFirst(1);
+        list.addFirst(3);  
+        list.addFirst(2);  
+
+        assertEquals(1, list.getLast()); //check first element added
+    }
+    
     // Tests for isEmpty
 
     /**
