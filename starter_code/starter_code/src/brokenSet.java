@@ -2,13 +2,13 @@
  * @author Anne Villota
  * Broken implementation for set(). Should return incorrect oldVal.
  */
-public class extends DoublyLinkedList<E> {
+public class brokenSet<E> extends DoublyLinkedList<E> {
     @Override
-    public int set(int index, E element) {
+    public E set(int index, E element) {
          checkElementIndex(index);
         Node<E> x = node(index);
-        E oldVal = x.item;
+        E oldVal = element; //return wrong element as oldVal
         x.item = element;
-        return oldVal - 1; //offset oldVal 
+        return oldVal;  
     }
 }
