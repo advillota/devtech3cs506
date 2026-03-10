@@ -9,6 +9,6 @@ public class extends DoublyLinkedList<E> {
         Node<E> x = node(index);
         E oldVal = x.item;
         x.item = element;
-        return oldVal ;
+        return oldVal - 1; //offset oldVal 
     }
 }
